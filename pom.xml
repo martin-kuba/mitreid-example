@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cz.muni.ics</groupId>
+	<artifactId>mitreid-example</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>example openid connect overlay</name>
+
+	<modules>
+		<module>oidc-idp</module>
+	</modules>
+
+	<properties>
+		<mitreid-version>1.3.1</mitreid-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-version>8</java-version>
+		<maven.compiler.source>${java-version}</maven.compiler.source>
+		<maven.compiler.target>${java-version}</maven.compiler.target>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.mitre</groupId>
+				<artifactId>openid-connect-parent</artifactId>
+				<type>pom</type>
+				<version>${mitreid-version}</version>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<finalName>oidc-idp</finalName>
+	</build>
+
+</project>

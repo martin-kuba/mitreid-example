@@ -1,0 +1,35 @@
+<configuration packagingData="true" debug="false" scan="false" scanPeriod="30 seconds">
+	<contextName>oidc-idp</contextName>
+	<if condition='isDefined("catalina.base")'>
+		<then>
+			<appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<file>${catalina.base}/logs/${CONTEXT_NAME}.log</file>
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+					<fileNamePattern>${catalina.base}/logs/${CONTEXT_NAME}.log.%d{yyyy-MM-dd}</fileNamePattern>
+				</rollingPolicy>
+				<encoder>
+					<!-- http://logback.qos.ch/manual/layouts.html#conversionWord -->
+					<pattern>%d [%thread] %-5level %logger{120} - %msg%n</pattern>
+				</encoder>
+			</appender>
+		</then>
+		<else>
+			<appender name="APP" class="ch.qos.logback.core.ConsoleAppender">
+				<encoder>
+					<pattern>%d [%thread] %-5level %logger{120} - %msg%n</pattern>
+				</encoder>
+			</appender>
+		</else>
+	</if>
+
+	<root level="info">
+		<appender-ref ref="APP"/>
+	</root>
+
+	<!-- keep Spring quiet -->
+	<logger name="org.springframework" level="warn"/>
+	<logger name="org.springframework.security" level="warn"/>
+	<logger name="org.springframework.web" level="warn"/>
+	<logger name="cz.muni.ics.oidc" level="debug"/>
+
+</configuration>

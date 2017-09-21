@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Replaces (overlays) the same-name file from project org.mitre.openid-connect-server-webapp.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="configBean" class="org.mitre.openid.connect.config.ConfigurationPropertiesBean">
+	    
+	    <!-- This property sets the root URL of the server, known as the issuer -->
+		<property name="issuer" value="https://cloud25b.cerit-sc.cz/oidc-idp/" />
+		
+		<!-- This property is a URL pointing to a logo image 24px high to be used in the top bar -->
+ 		<property name="logoImageUrl" value="resources/images/openid_connect_small.png" />
+ 		
+ 		<!-- This property sets the display name of the server, displayed in the topbar and page title -->
+ 		<property name="topbarTitle" value="My OpenID Connect Server" />
+
+		<!-- This property forces the issuer value to start with "https", recommended on production servers -->
+	    <property name="forceHttps" value="true" />
+
+	</bean>
+	
+</beans>
